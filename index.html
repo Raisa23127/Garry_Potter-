@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гарри Поттер - Волшебный мир</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --card-bg: #22223f;
+            --card-border: #3a3a5d;
+            --accent-red: #9d0208;
+            --accent-gold: #e0c170;
+            --accent-blue: #3d5a80;
+            --text-primary: #f5f5f5;
+            --text-secondary: #d0d0e0;
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+            --shadow-light: rgba(157, 2, 8, 0.3);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Блок 1: Главный экран */
+        .hero {
+            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(22, 33, 62, 0.85)), 
+                        url('https://i.pinimg.com/1200x/36/1c/fd/361cfde960c307ac08be06a0171dea4a.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'UnifrakturMaguntia', 'Cinzel', serif;
+            font-size: 5.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            text-shadow: 
+                0 0 5px rgba(224, 193, 112, 0.7),
+                0 0 10px rgba(224, 193, 112, 0.5),
+                0 0 15px rgba(224, 193, 112, 0.3),
+                3px 3px 5px rgba(0, 0, 0, 0.8),
+                5px 5px 10px rgba(0, 0, 0, 0.6);
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+            animation: medievalGlow 3s ease-in-out infinite alternate;
+            transform-style: preserve-3d;
+            text-transform: uppercase;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        @keyframes medievalGlow {
+            0% {
+                text-shadow: 
+                    0 0 5px rgba(224, 193, 112, 0.7),
+                    0 0 10px rgba(224, 193, 112, 0.5),
+                    3px 3px 5px rgba(0, 0, 0, 0.8),
+                    5px 5px 10px rgba(0, 0, 0, 0.6);
+                transform: translateY(0);
+            }
+            100% {
+                text-shadow: 
+                    0 0 10px rgba(224, 193, 112, 0.9),
+                    0 0 20px rgba(224, 193, 112, 0.7),
+                    0 0 30px rgba(224, 193, 112, 0.5),
+                    3px 3px 5px rgba(0, 0, 0, 0.8),
+                    5px 5px 10px rgba(0, 0, 0, 0.6);
+                transform: translateY(-3px);
+            }
+        }
+
+        .hero h1:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-gold), 
+                var(--accent-red),
+                var(--accent-gold), 
+                transparent);
+            bottom: -15px;
+            left: 0;
+            border-radius: 2px;
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200px 0;
+            }
+            100% {
+                background-position: 200px 0;
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin: 30px 0 40px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(224, 193, 112, 0.3);
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            padding: 10px 30px;
+        }
+
+        .hero-subtitle:before,
+        .hero-subtitle:after {
+            content: '✧';
+            position: absolute;
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hero-subtitle:before {
+            left: -20px;
+        }
+
+        .hero-subtitle:after {
+            right: -20px;
+        }
+
+        .hero-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 40px 0;
+            padding: 25px;
+            border-left: 4px solid var(--accent-red);
+            border-right: 4px solid var(--accent-red);
+            background-color: rgba(34, 34, 63, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow-dark);
+            position: relative;
+            overflow: hidden;
+            color: var(--text-primary);
+            backdrop-filter: blur(5px);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-quote:before {
+            content: "❝";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 3.5rem;
+            color: var(--accent-red);
+            opacity: 0.5;
+        }
+
+        .hero-quote:after {
+            content: "❞";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 3.5rem;
+            color: var(--accent-red);
+            opacity: 0.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-red), #7a0106);
+            color: var(--accent-gold);
+            padding: 15px 40px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px var(--shadow-dark);
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, var(--accent-gold), #c9a959);
+            color: var(--dark-bg);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px var(--shadow-light);
+            border-color: var(--accent-red);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-gold);
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+            z-index: 2;
+            text-shadow: 0 0 10px rgba(224, 193, 112, 0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* Блок 2: О персонаже */
+        .bio {
+            background-color: var(--darker-bg);
+            position: relative;
+        }
+
+        .bio:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+            position: relative;
+            text-shadow: 0 0 10px rgba(224, 193, 112, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bio-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .bio-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-dark);
+            border: 1px solid var(--card-border);
+            transition: transform 0.5s ease;
+            position: relative;
+            background-color: #000;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .bio-image:hover {
+            transform: scale(1.02);
+        }
+
+        .bio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .bio-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .bio-text {
+            flex: 1;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            background-color: rgba(40, 40, 70, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-red);
+            box-shadow: 0 5px 15px var(--shadow-dark);
+        }
+
+        .bio-text strong {
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Блок 3: Галерея */
+        .gallery {
+            background-color: var(--dark-bg);
+            position: relative;
+        }
+
+        .gallery:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-dark);
+            transition: all 0.3s ease;
+            height: 280px;
+            border: 1px solid var(--card-border);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px var(--shadow-light);
+            border-color: var(--accent-gold);
+        }
+
+        .gallery-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(26, 26, 46, 0.8));
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.1);
+            transition: filter 0.3s, transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1) contrast(1.1);
+            transform: scale(1.1);
+        }
+
+        /* Блок 4: Способности и особенности */
+        .abilities {
+            background-color: var(--darker-bg);
+            position: relative;
+        }
+
+        .abilities:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .abilities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .ability-card {
+            background-color: rgba(40, 40, 70, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 25px var(--shadow-dark);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ability-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-light);
+            border-color: var(--accent-red);
+        }
+
+        .ability-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+        }
+
+        .ability-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(224, 193, 112, 0.5);
+        }
+
+        .ability-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .ability-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Блок 5: Улучшенная форма обратной связи с автоответом */
+        .contact {
+            background-color: var(--dark-bg);
+            position: relative;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+        }
+
+        /* Стили для улучшенной формы */
+        .magic-form {
+            background: rgba(34, 34, 63, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 
+                0 0 30px rgba(157, 2, 8, 0.4),
+                0 0 60px rgba(224, 193, 112, 0.2);
+            border: 2px solid #9d0208;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magic-form::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(224, 193, 112, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .form-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-red);
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .magic-form input, 
+        .magic-form textarea {
+            width: 100%;
+            padding: 15px 15px 15px 50px;
+            background: rgba(45, 45, 80, 0.9);
+            border: 2px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .magic-form input:focus, 
+        .magic-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(224, 193, 112, 0.3);
+            background: rgba(45, 45, 80, 1);
+        }
+
+        .magic-form textarea {
+            min-height: 150px;
+            resize: vertical;
+            padding-left: 50px;
+        }
+
+        .spell-button {
+            background: linear-gradient(135deg, var(--accent-red), #7a0106);
+            color: var(--accent-gold);
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .spell-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--accent-gold), #c9a959);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(224, 193, 112, 0.4);
+        }
+
+        .spell-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .message {
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid #2ecc71;
+            color: #2ecc71;
+        }
+
+        .success i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        .error i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: rgba(61, 90, 128, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .auto-reply-info {
+            background: rgba(224, 193, 112, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px dashed var(--accent-gold);
+            text-align: center;
+        }
+
+        .auto-reply-info i {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Блок 6: Футер */
+        .footer {
+            background-color: var(--darker-bg);
+            padding: 50px 0 30px;
+            position: relative;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-gold), var(--accent-red));
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(45, 45, 80, 0.9);
+            border: 1px solid var(--card-border);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--shadow-light);
+            border-color: var(--accent-gold);
+        }
+
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            text-shadow: 0 0 15px rgba(224, 193, 112, 0.5);
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-logo:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--card-border);
+            width: 100%;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Анимация появления элементов */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Модальное окно для увеличения изображений */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(224, 193, 112, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--accent-gold);
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+            font-family: 'Cinzel', serif;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-red);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .bio-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .bio-image {
+                min-height: 400px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .magic-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .abilities-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .bio-image {
+                min-height: 350px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .gallery-item {
+                height: 230px;
+            }
+            
+            .magic-form {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-item {
+                height: 180px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 20px;
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+            }
+            
+            .hero-quote {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+            
+            .hero h1:after {
+                bottom: -10px;
+                height: 3px;
+            }
+            
+            .magic-form {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Дополнительные эффекты */
+        .magic-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(157, 2, 8, 0.2) 0px, transparent 50px),
+                radial-gradient(circle at 80% 70%, rgba(224, 193, 112, 0.15) 0px, transparent 60px),
+                radial-gradient(circle at 40% 80%, rgba(61, 90, 128, 0.15) 0px, transparent 40px);
+        }
+
+        .hero .magic-particles {
+            opacity: 0.15;
+        }
+        
+        /* Эффект свечения для изображения */
+        .bio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(224, 193, 112, 0.1) 70%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .bio-image:hover::after {
+            opacity: 1;
+        }
+        
+        /* Эффект для главного экрана */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, transparent 30%, rgba(26, 26, 46, 0.7) 70%);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Блок 1: Главный экран -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="magic-particles"></div>
+        <div class="hero-content">
+            <h1>ГАРРИ ПОТТЕР</h1>
+            <div class="hero-subtitle">МАЛЬЧИК, КОТОРЫЙ ВЫЖИЛ</div>
+            <div class="hero-quote">"Тёмные времена наступают. Сейчас не время бояться, а время собрать всё своё мужество и сражаться за то, во что мы верим."</div>
+            <a href="#bio" class="cta-button">Узнать больше</a>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Блок 2: О персонаже -->
+    <section class="bio" id="bio">
+        <div class="magic-particles"></div>
+        <div class="container">
+            <h2 class="section-title">О персонаже</h2>
+            <div class="bio-content">
+                <div class="bio-image" onclick="openModal('https://i.pinimg.com/736x/f9/0e/a6/f90ea67eeb2b88dfb7eb1ad0d64ad025.jpg')">
+                    <img src="https://i.pinimg.com/736x/f9/0e/a6/f90ea67eeb2b88dfb7eb1ad0d64ad025.jpg" alt="Гарри Поттер в Хогвартсе">
+                </div>
+                <div class="bio-text">
+                    <p><strong>Гарри Джеймс Поттер</strong> — главный герой серии романов Джоан Роулинг о мальчике-волшебнике. Родился 31 июля 1980 года в семье Джеймса и Лили Поттер.</p>
+                    <p>В возрасте одного года Гарри стал единственным, кто выжил после смертельного заклятия "Авада Кедавра", произнесенного тёмным волшебником лордом Волан-де-Мортом. Это сделало его знаменитым в волшебном мире как "Мальчика, который выжил".</p>
+                    <p>До своего одиннадцатилетия Гарри жил с неволшебными родственниками Дурслями, не зная о своих магических способностях. В 11 лет он получил приглашение в школу чародейства и волшебства Хогвартс, где был распределен на факультет Гриффиндор.</p>
+                    <p>В Хогвартсе Гарри обрёл верных друзей — Рона Уизли и Гермиону Грейнджер, вместе с которыми противостоял силам зла на протяжении всех лет обучения. На фото изображен Гарри в коридорах Хогвартса, легендарной школы магии, которая стала для него настоящим домом.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 3: Галерея -->
+    <section class="gallery">
+        <div class="magic-particles"></div>
+        <div class="container">
+            <h2 class="section-title">Волшебная галерея</h2>
+            <div class="gallery-container">
+                <!-- Все ваши фотографии -->
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/a5/f9/5f/a5f95f4767bb1d3274913e8fbc9d9b9f.jpg')">
+                    <img src="https://i.pinimg.com/736x/a5/f9/5f/a5f95f4767bb1d3274913e8fbc9d9b9f.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/89/e2/ee/89e2eece6f6b5829ff33a957a912897f.jpg')">
+                    <img src="https://i.pinimg.com/736x/89/e2/ee/89e2eece6f6b5829ff33a957a912897f.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/ee/43/e8/ee43e823a00da83103f01a7912635473.jpg')">
+                    <img src="https://i.pinimg.com/736x/ee/43/e8/ee43e823a00da83103f01a7912635473.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/f2/9c/b4/f29cb468ad8fb2105001bbb954a557f9.jpg')">
+                    <img src="https://i.pinimg.com/736x/f2/9c/b4/f29cb468ad8fb2105001bbb954a557f9.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/0a/59/f3/0a59f3ad4b073836183034e46eafc05a.jpg')">
+                    <img src="https://i.pinimg.com/736x/0a/59/f3/0a59f3ad4b073836183034e46eafc05a.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/1200x/55/3f/6c/553f6c21c7101c05cd58450bf7f5e7e6.jpg')">
+                    <img src="https://i.pinimg.com/1200x/55/3f/6c/553f6c21c7101c05cd58450bf7f5e7e6.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/5d/c1/f6/5dc1f6b8ad6cf1a3752d9eceb94953db.jpg')">
+                    <img src="https://i.pinimg.com/736x/5d/c1/f6/5dc1f6b8ad6cf1a3752d9eceb94953db.jpg" alt="Гарри Поттер">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/1200x/0c/8b/bb/0c8bbbd3f0c99163aeda04d656bf36fe.jpg')">
+                    <img src="https://i.pinimg.com/1200x/0c/8b/bb/0c8bbbd3f0c99163aeda04d656bf36fe.jpg" alt="Гарри Поттер">
+                </div>
+                <!-- Новая фотография -->
+                <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/b2/05/38/b20538138d9ac8182d5a7dfb65c8a7a6.jpg')">
+                    <img src="https://i.pinimg.com/736x/b2/05/38/b20538138d9ac8182d5a7dfb65c8a7a6.jpg" alt="Гарри Поттер">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 4: Способности и особенности -->
+    <section class="abilities">
+        <div class="magic-particles"></div>
+        <div class="container">
+            <h2 class="section-title">Магические способности</h2>
+            <div class="abilities-container">
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <h3>Парсельтанг</h3>
+                    <p>Уникальная способность разговаривать на языке змей, унаследованная от лорда Волан-де-Морта через фрагмент его души. Эта редкая способность считается тёмным искусством.</p>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Патронус</h3>
+                    <p>Материальное воплощение позитивных эмоций в виде серебристого оленя, способного отгонять дементоров. Один из самых сильных патронусов, когда-либо созданных.</p>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3>Мастер квиддича</h3>
+                    <p>Талантливый ловец, самый молодой игрок в квиддич за последнее столетие. Его мастерство в полёте на мётле неоднократно спасало команду Гриффиндора.</p>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Сила воли</h3>
+                    <p>Невероятная сила воли и сопротивляемость тёмным искушениям, несмотря на прямую связь с лордом Волан-де-Мортом через шрам-горикс.</p>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Лидерские качества</h3>
+                    <p>Способность вдохновлять и объединять людей. Основал Отряд Дамблдора — тайную организацию для обучения защите от тёмных искусств.</p>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Владелец Даров Смерти</h3>
+                    <p>Единственный волшебник, добровольно ставший хозяином всех трёх Даров Смерти: Бузинной палочки, Воскрешающего камня и Мантии-невидимки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 5: Улучшенная форма обратной связи с автоответом -->
+    <section class="contact">
+        <div class="magic-particles"></div>
+        <div class="container">
+            <h2 class="section-title">Волшебная связь</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary); max-width: 700px; margin-left: auto; margin-right: auto;">Отправьте сову с вашими мыслями о мире Гарри Поттера</p>
+            
+            <div class="magic-form">
+                <div class="form-content">
+                    <h1 style="color: var(--accent-gold); text-align: center; margin-bottom: 10px; font-size: 2.5rem; text-shadow: 0 0 10px rgba(224, 193, 112, 0.5); font-family: 'Georgia', serif;">Напишите нам 🦉</h1>
+                    <p class="subtitle">Мы ответим вам в ближайшее время</p>
+                    
+                    <!-- Информация об автоответе -->
+                    <div class="auto-reply-info">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h3>📨 Вы получите автоматический ответ!</h3>
+                        <p>Сразу после отправки формы вы получите письмо с подтверждением на указанный email.</p>
+                    </div>
+                    
+                    <form id="magicForm">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
+                            <div class="input-with-icon">
+                                <i class="input-icon fas fa-hat-wizard"></i>
+                                <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Ваш email:</label>
+                            <div class="input-with-icon">
+                                <i class="input-icon fas fa-feather-alt"></i>
+                                <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-scroll"></i> Ваше сообщение:</label>
+                            <div class="input-with-icon">
+                                <i class="input-icon fas fa-quill"></i>
+                                <textarea id="message" name="message" placeholder="Что вы хотите нам сообщить?" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="spell-button" id="submitBtn">
+                            <span id="btnText"><i class="fas fa-paper-plane"></i> Отправить сообщение</span>
+                            <div class="spinner" id="spinner" style="display: none;"></div>
+                        </button>
+                    </form>
+                    
+                    <div id="successMessage" class="message success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>✅ Сообщение отправлено!</h3>
+                        <p><strong>Проверьте вашу почту — мы отправили вам автоматическое подтверждение.</strong></p>
+                        <p>Также мы получили ваше сообщение и ответим в ближайшее время.</p>
+                    </div>
+                    
+                    <div id="errorMessage" class="message error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>❌ Ошибка отправки</h3>
+                        <p id="errorText">Попробуйте еще раз или свяжитесь с нами другим способом.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3><i class="fas fa-info-circle"></i> Что происходит после отправки:</h3>
+                        <p>1. Вы получаете <strong>автоматическое письмо</strong> с подтверждением</p>
+                        <p>2. Мы видим ваше сообщение в нашей почте</p>
+                        <p>3. Мы читаем ваше сообщение и готовим ответ</p>
+                        <p>4. Вы получаете <strong>личный ответ</strong> от нас</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 6: Футер -->
+    <footer class="footer">
+        <div class="magic-particles"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Harry Potter</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>© 2025 Мир Гарри Поттера. Все права защищены. Это фанатский сайт, не связанный с Warner Bros. или J.K. Rowling.</p>
+                    <p>Использованы изображения с Unsplash и Pinterest для демонстрационных целей.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для увеличения изображений -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="">
+    </div>
+
+    <script>
+        // ========== КОНФИГУРАЦИЯ ДЛЯ ФОРМЫ ==========
+        const ACCESS_KEY = 'a196a6db-672d-4652-8fdf-10107effd33a';
+        const FORM_URL = 'https://api.web3forms.com/submit';
+        
+        // ========== ЭЛЕМЕНТЫ DOM ДЛЯ ФОРМЫ ==========
+        const form = document.getElementById('magicForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const spinner = document.getElementById('spinner');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        
+        // ========== ФУНКЦИИ ДЛЯ МОДАЛЬНОГО ОКНА ==========
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ========== ОБРАБОТКА ФОРМЫ С АВТООТВЕТОМ ==========
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            btnText.innerHTML = '<i class="fas fa-paper-plane"></i> Отправляем...';
+            spinner.style.display = 'block';
+            submitBtn.disabled = true;
+            
+            const senderName = document.getElementById('name').value.trim();
+            const senderEmail = document.getElementById('email').value.trim();
+            const senderMessage = document.getElementById('message').value.trim();
+            
+            // Формируем текст автоответа
+            const autoReplySubject = `✅ Подтверждение получения вашего сообщения`;
+            const autoReplyMessage = `
+Уважаемый(ая) ${senderName},
+
+Благодарим вас за обращение!
+
+Мы получили ваше сообщение:
+"${senderMessage.substring(0, 100)}${senderMessage.length > 100 ? '...' : ''}"
+
+Мы рассмотрим ваше обращение и ответим в ближайшее время.
+
+С уважением,
+Команда сайта о Гарри Поттере
+
+---
+Это автоматическое письмо, пожалуйста, не отвечайте на него.
+            `;
+            
+            const formData = {
+                access_key: ACCESS_KEY,
+                
+                // Основные данные
+                name: senderName,
+                email: senderEmail,
+                message: senderMessage,
+                
+                // Письмо, которое получим МЫ (администраторы)
+                subject: `✉️ Новое сообщение от ${senderName}`,
+                from_name: 'Сайт о Гарри Поттере',
+                
+                // Настройки автоответа (Web3Forms отправит его автоматически)
+                'autoreply': 'true',
+                'autoreply_subject': autoReplySubject,
+                'autoreply_message': autoReplyMessage,
+                'autoreply_from': 'noreply@harrypotter-site.com',
+                
+                // Дополнительные настройки
+                'replyto': senderEmail,  // Чтобы мы могли ответить вручную
+                'botcheck': '',
+                
+                // Метка для фильтрации в почте
+                'labels': 'contact_form'
+            };
+            
+            try {
+                const response = await fetch(FORM_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    // УСПЕХ
+                    successMessage.style.display = 'block';
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <h3>✅ Сообщение отправлено!</h3>
+                        <p><strong>Автоматическое подтверждение отправлено на:</strong></p>
+                        <p style="font-size: 1.2rem; color: var(--accent-gold); margin: 10px 0;">${senderEmail}</p>
+                        <p>Проверьте вашу почту (включая папку "Спам")</p>
+                        <p><small><i class="fas fa-clock"></i> Письмо придет в течение 2-3 минут</small></p>
+                    `;
+                    
+                    form.reset();
+                    
+                    successMessage.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // Показываем таймер
+                    let seconds = 180;
+                    const timerElement = document.createElement('p');
+                    timerElement.style.color = 'var(--accent-gold)';
+                    timerElement.style.marginTop = '10px';
+                    successMessage.appendChild(timerElement);
+                    
+                    const timerInterval = setInterval(() => {
+                        seconds--;
+                        const minutes = Math.floor(seconds / 60);
+                        const secs = seconds % 60;
+                        timerElement.textContent = `Проверьте почту через: ${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+                        
+                        if (seconds <= 0) {
+                            clearInterval(timerInterval);
+                            timerElement.textContent = 'Письмо должно было прийти! Проверьте папку "Спам"';
+                        }
+                    }, 1000);
+                    
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                        clearInterval(timerInterval);
+                    }, 10000);
+                    
+                } else {
+                    throw new Error(result.message || 'Ошибка сервера');
+                }
+                
+            } catch (error) {
+                console.error('Ошибка:', error);
+                
+                errorText.textContent = 'Ошибка отправки. Попробуйте еще раз или свяжитесь другим способом.';
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+                
+            } finally {
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
+                btnText.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить сообщение';
+            }
+        });
+        
+        // ========== ВАЛИДАЦИЯ EMAIL ==========
+        document.getElementById('email').addEventListener('blur', function() {
+            const email = this.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#e74c3c';
+                this.style.boxShadow = '0 0 10px rgba(231, 76, 60, 0.3)';
+            } else {
+                this.style.borderColor = emailRegex.test(email) ? '#2ecc71' : 'var(--card-border)';
+                this.style.boxShadow = emailRegex.test(email) ? '0 0 10px rgba(46, 204, 113, 0.3)' : 'none';
+            }
+        });
+        
+        // ========== ОБЩИЕ ФУНКЦИИ САЙТА ==========
+        
+        // Закрытие модального окна
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+
+        // Закрытие модального окна при клике вне изображения
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Закрытие модального окна клавишей Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('imageModal').classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за карточками способностей и галереей
+        document.querySelectorAll('.ability-card, .gallery-item, .bio-content, .magic-form').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Добавляем эффект параллакса для героя
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPosition = `center ${scrolled * 0.5}px`;
+            }
+        });
+
+        // Добавляем эффекты при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Постепенное появление контента
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    heroContent.style.transition = 'opacity 1s ease, transform 1s ease';
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0)';
+                }, 300);
+            }
+            
+            // Мерцание магических частиц
+            const particles = document.querySelectorAll('.magic-particles');
+            particles.forEach(particle => {
+                setInterval(() => {
+                    particle.style.opacity = (0.05 + Math.random() * 0.15) + '';
+                }, 3000);
+            });
+            
+            // Анимация для изображения Гарри
+            const harryImage = document.querySelector('.bio-image');
+            if (harryImage) {
+                harryImage.style.opacity = '0';
+                harryImage.style.transform = 'translateX(-30px)';
+                
+                setTimeout(() => {
+                    harryImage.style.transition = 'opacity 1s ease, transform 1s ease';
+                    harryImage.style.opacity = '1';
+                    harryImage.style.transform = 'translateX(0)';
+                }, 500);
+            }
+            
+            // Показываем подсказку об автоответе
+            setTimeout(() => {
+                const infoBox = document.querySelector('.auto-reply-info');
+                if (infoBox) {
+                    infoBox.style.transform = 'scale(1.05)';
+                    infoBox.style.transition = 'transform 0.5s';
+                    
+                    setTimeout(() => {
+                        infoBox.style.transform = 'scale(1)';
+                    }, 500);
+                }
+            }, 1000);
+        });
+        
+        // Предзаполнение для теста (можно удалить)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Только для демо - предзаполняем поля
+            if (window.location.href.includes('test')) {
+                document.getElementById('name').value = 'Тестовый Пользователь';
+                document.getElementById('email').value = 'test@example.com';
+                document.getElementById('message').value = 'Это тестовое сообщение для проверки автоответа.';
+            }
+        });
+    </script>
+</body>
+</html>
